@@ -18,7 +18,7 @@ const pt = {
   // ── Hero ──────────────────────────────────────────────────────────────────
   hero: {
     name: 'Matheus Vilas-Boas',
-    title: 'Engenharia de Software Escalável & Soluções em IA',
+    title: 'Engenharia de Software & Soluções em IA',
     subtitle:
       'Bacharel em Ciência da Computação focado na construção de arquiteturas robustas, Clean Code e automação inteligente.',
   },
@@ -134,7 +134,7 @@ const en: typeof pt = {
   // ── Hero ──────────────────────────────────────────────────────────────────
   hero: {
     name: 'Matheus Vilas-Boas',
-    title: 'Scalable Software Engineering & AI Solutions',
+    title: 'Software Engineering & AI Solutions',
     subtitle:
       'Computer Science graduate focused on building robust architectures, Clean Code and intelligent automation.',
   },
