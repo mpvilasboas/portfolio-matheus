@@ -94,7 +94,7 @@ function HomePage() {
           </p>
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <p className="text-sm text-zinc-500 dark:text-zinc-400 font-mono">
-              {t.lang === 'pt' ? 'Email para contato:' : 'Contact email:'}{' '}
+              {lang === 'pt' ? 'Email para contato:' : 'Contact email:'}{' '}
               <a
                 href={`mailto:${email}`}
                 className="text-zinc-900 dark:text-zinc-100 underline underline-offset-4 hover:text-zinc-500 dark:hover:text-zinc-400 transition-colors"
@@ -181,7 +181,7 @@ function HomePage() {
           className="pt-12 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            © {new Date().getFullYear()} Matheus Vilas-Boas. {t.footer.legal}
+            © {new Date().getFullYear()} Matheus Vilas-Boas.
           </p>
           <div className="flex gap-6 text-sm font-medium">
             <a href={`mailto:${email}`} className="hover:text-zinc-500 dark:hover:text-zinc-400 transition-colors">

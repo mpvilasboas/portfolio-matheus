@@ -82,7 +82,6 @@ const pt = {
 
   // ── Footer ────────────────────────────────────────────────────────────────
   footer: {
-    legal: 'CNPJ (MEI) Ativo.',
     email: 'Email',
     linkedin: 'LinkedIn',
   },
@@ -115,9 +114,9 @@ const pt = {
     previewTitlePlaceholder: 'Título do post',
     previewSummaryPlaceholder: 'Resumo do post...',
   },
-} as const;
+};
 
-const en = {
+const en: typeof pt = {
   // ── Global ────────────────────────────────────────────────────────────────
   loading: 'Loading portfolio...',
   darkMode: 'Dark',
@@ -231,7 +230,7 @@ const en = {
     previewTitlePlaceholder: 'Post title',
     previewSummaryPlaceholder: 'Post summary...',
   },
-} as const;
+};
 
-export const translations = { pt, en } as const;
+export const translations: Record<Lang, typeof pt> = { pt, en };
 export type Translations = typeof pt;

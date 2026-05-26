@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import type { GithubRepo, ContributionDay } from '../domain/Github';
 import { fetchGithubRepos, fetchGithubContributions } from '../application/useCases/GetGithubDataUseCase';
 import { useTheme } from '../context/ThemeContext';
