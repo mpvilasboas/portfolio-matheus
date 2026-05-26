@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Habilita dark mode via classe .dark no <html> */
+@variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply bg-zinc-50 text-zinc-900 antialiased;
+  @apply dark:bg-zinc-900 dark:text-zinc-100;
+}
+
+/* ── Tipografia para o conteúdo dos posts do blog ──────────────────────── */
+.prose-blog h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.prose-blog h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #27272a;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-blog p {
+  color: #3f3f46;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+.prose-blog ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.25rem;
+}
+
+.prose-blog ul li {
+  color: #3f3f46;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.prose-blog ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #a1a1aa;
+}
+
+.prose-blog code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+  background: #f4f4f5;
+  color: #18181b;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.prose-blog strong {
+  font-weight: 600;
+  color: #18181b;
+}
+
+.prose-blog a {
+  color: #18181b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-blog a:hover {
+  color: #71717a;
+}
+
+/* Dark mode overrides para prose-blog */
+.dark .prose-blog h2 { color: #f4f4f5; }
+.dark .prose-blog h3 { color: #e4e4e7; }
+.dark .prose-blog p  { color: #a1a1aa; }
+.dark .prose-blog ul li { color: #a1a1aa; }
+.dark .prose-blog ul li::before { color: #52525b; }
+.dark .prose-blog code { background: #27272a; color: #f4f4f5; }
+.dark .prose-blog strong { color: #f4f4f5; }
+.dark .prose-blog a { color: #e4e4e7; }
+.dark .prose-blog a:hover { color: #a1a1aa; }

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "slug": "clean-architecture-na-pratica",
+    "title": "Clean Architecture na Prática: o que realmente muda no dia a dia",
+    "summary": "Muito se fala em Clean Architecture, mas o impacto real vai além de pastas bem organizadas. Aqui, conto o que mudou de fato no meu fluxo de trabalho após adotar Use Cases e Value Objects em um ERP real.",
+    "tags": ["Arquitetura", "Clean Code", "PHP", "TypeScript"],
+    "publishedAt": "2026-05-20T10:00:00Z",
+    "readingTimeMin": 6,
+    "content": "<h2>Por que eu fui atrás de Clean Architecture?</h2>\n<p>\n  Trabalhar com sistemas legados ensina uma coisa rápido: código sem fronteiras claras vira uma armadilha. \n  Um campo novo no banco exige mudança em 5 lugares diferentes. Um bug de validação some e reaparece em outro módulo. \n  Foi nesse cenário que decidi estudar e aplicar os princípios de Robert C. Martin a sério.\n</p>\n\n<h2>O que é um Use Case, de verdade?</h2>\n<p>\n  Um Use Case não é só uma classe com um método <code>execute()</code>. Ele é o isolamento da <strong>intenção do negócio</strong>. \n  Quando você escreve <code>EmitirNFeUseCase</code>, você está dizendo: \"aqui e só aqui fica a regra de emitir nota fiscal\". \n  Isso muda como você testa, como você escala e como você onboarda alguém novo no time.\n</p>\n\n<h2>Value Objects: o fim dos primitivos soltos</h2>\n<p>\n  Antes, um CNPJ era uma <code>string</code>. Depois, virou <code>Cnpj</code> — um objeto que valida a si mesmo na construção. \n  Parece burocracia, mas eliminou uma classe inteira de bugs que eu nem percebia que estava criando.\n</p>\n\n<h2>O que mudou no dia a dia</h2>\n<ul>\n  <li>Pull requests ficaram menores e mais focados</li>\n  <li>Testes unitários passaram a ser óbvios de escrever</li>\n  <li>Novos devs entenderam o fluxo sem precisar de uma call de 2 horas</li>\n</ul>\n\n<p>\n  Não é bala de prata. Tem custo inicial. Mas em sistemas que crescem, é o investimento que mais se paga.\n</p>"
+  },
+  {
+    "id": "2",
+    "slug": "ia-para-automacao-de-noticias",
+    "title": "Como usei IA para automatizar a curadoria de notícias de uma rádio",
+    "summary": "Um desafio real: uma rádio matinal precisava de scripts prontos às 5h da manhã, todos os dias. A solução foi um pipeline com APIs de IA que transformou horas de trabalho manual em minutos.",
+    "tags": ["IA", "Node.js", "Automação", "SaaS"],
+    "publishedAt": "2026-05-10T08:00:00Z",
+    "readingTimeMin": 5,
+    "content": "<h2>O problema</h2>\n<p>\n  Rádios locais têm um ritmo brutal de produção. A equipe precisava chegar às 5h, ler notícias de dezenas de fontes, \n  filtrar o que era relevante para a região e ainda escrever os scripts em tom de rádio. Todo dia.\n</p>\n\n<h2>A arquitetura da solução</h2>\n<p>\n  Construí um pipeline em Node.js que, à meia-noite, busca notícias de APIs públicas e RSS feeds, \n  filtra por relevância geográfica e temática, e manda o conteúdo bruto para a API da OpenAI com \n  um prompt calibrado para o tom da emissora. O output é um script em texto pronto para leitura.\n</p>\n\n<h2>O que aprendi sobre prompts para uso profissional</h2>\n<p>\n  A maior lição foi que prompt engineering para produção é diferente de experimentação. \n  Você precisa de saídas <strong>consistentes</strong>, não criativas. \n  Isso significa exemplos no prompt (few-shot), temperatura baixa e validação do output antes de entregar.\n</p>\n\n<h2>Resultado</h2>\n<p>\n  A equipe passou de 2h de preparação para 15 minutos de revisão. \n  O produto evoluiu para um SaaS com plano de expansão para outras emissoras.\n</p>"
+  }
+]
