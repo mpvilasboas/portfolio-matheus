@@ -88,7 +88,7 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 selection:bg-zinc-200 dark:selection:bg-zinc-700">
-      <div className="max-w-3xl mx-auto px-6 py-24 space-y-32">
+      <div className="max-w-3xl mx-auto px-6 py-24 space-y-20">
 
         {/* 1. HERO */}
         <header className="space-y-6">
