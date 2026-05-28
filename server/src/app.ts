@@ -5,6 +5,7 @@ import cors from 'cors';
 import { ProjectController } from './presentation/ProjectController.js';
 import { BlogController } from './presentation/BlogController.js';
 import { GithubController } from './presentation/GithubController.js';
+import { VisitorController } from './presentation/VisitorController.js';
 
 const app = express();
 
@@ -42,5 +43,9 @@ app.post('/api/blog', requireBlogSecret, (req, res) => blogController.create(req
 const githubController = new GithubController();
 app.get('/api/github/repos', (req, res) => githubController.repos(req, res));
 app.get('/api/github/contributions', (req, res) => githubController.contributions(req, res));
+
+const visitorController = new VisitorController();
+app.get('/api/visitors', (req, res) => visitorController.get(req, res));
+app.post('/api/visitors', (req, res) => visitorController.increment(req, res));
 
 export default app;

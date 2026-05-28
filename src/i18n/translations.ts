@@ -13,6 +13,8 @@ const pt = {
     backBlog: '← Blog',
     contact: 'Entrar em contato',
     github: 'GitHub',
+    downloadCv: 'Baixar CV',
+    views: 'visualizações',
   },
 
   // ── Hero ──────────────────────────────────────────────────────────────────
@@ -129,6 +131,8 @@ const en: typeof pt = {
     backBlog: '← Blog',
     contact: 'Get in touch',
     github: 'GitHub',
+    downloadCv: 'Download CV',
+    views: 'views',
   },
 
   // ── Hero ──────────────────────────────────────────────────────────────────

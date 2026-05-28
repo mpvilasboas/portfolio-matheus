@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { executeGetPortfolioData } from './application/useCases/GetProjectsUseCase';
+import { executeGetVisitorCount, executeIncrementVisitorCount } from './application/useCases/VisitorUseCase';
 import { BlogSection } from './components/BlogSection';
 import { GitHubSection } from './components/GitHubSection';
 import { PostPage } from './pages/PostPage';
@@ -57,12 +58,28 @@ export default function App() {
 function HomePage() {
   const { t, lang } = useLang();
   const [contact, setContact] = useState<{ email: string; github: string; linkedin: string } | null>(null);
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
 
   useEffect(() => {
     // Só usamos o servidor para os links de contato
     executeGetPortfolioData().then((data: any) => {
       if (data?.contact) setContact(data.contact);
     }).catch(() => { });
+
+    // Contador de visitantes (uma vez por sessão)
+    const hasVisited = sessionStorage.getItem('portfolio_visited');
+    if (!hasVisited) {
+      executeIncrementVisitorCount().then(count => {
+        if (count !== null) {
+          setVisitorCount(count);
+          sessionStorage.setItem('portfolio_visited', 'true');
+        }
+      }).catch(() => { });
+    } else {
+      executeGetVisitorCount().then(count => {
+        if (count !== null) setVisitorCount(count);
+      }).catch(() => { });
+    }
   }, []);
 
   const email = contact?.email ?? 'pontesvilasboas@gmail.com';
@@ -75,10 +92,18 @@ function HomePage() {
 
         {/* 1. HERO */}
         <header className="space-y-6">
-          {/* Controles: tema + idioma */}
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <LangToggle />
+          {/* Controles: tema + idioma e contador de visitantes */}
+          <div className="flex flex-wrap items-center justify-between gap-4 w-full">
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <LangToggle />
+            </div>
+            {visitorCount !== null && (
+              <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/50 rounded-full px-3 py-1 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                {visitorCount} {t.nav.views}
+              </span>
+            )}
           </div>
 
           <div>
@@ -109,6 +134,27 @@ function HomePage() {
               className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-6 py-2 rounded-md hover:border-zinc-900 dark:hover:border-zinc-400 transition-colors text-sm font-medium"
             >
               {t.nav.github}
+            </a>
+            <a
+              href="/CV_Matheus_Vilas_Boas.pdf"
+              download="CV_Matheus_Vilas_Boas.pdf"
+              className="flex items-center gap-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-6 py-2 rounded-md hover:border-zinc-900 dark:hover:border-zinc-400 transition-colors text-sm font-medium"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4 text-zinc-500 dark:text-zinc-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              {t.nav.downloadCv}
             </a>
           </div>
         </header>

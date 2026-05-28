@@ -18,7 +18,7 @@ export class BlogController {
 
     async getBySlug(req: Request, res: Response): Promise<void> {
         try {
-            const post = await new GetBlogPostBySlugUseCase().execute(req.params.slug);
+            const post = await new GetBlogPostBySlugUseCase().execute(String(req.params.slug));
             if (!post) {
                 res.status(404).json({ error: 'Post não encontrado' });
                 return;
